@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8DDBDFBE-CC9E-434C-B743-651A1F7DB0AF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>cal</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>63F5D8B32FD5D11DDE894D5E7B37E55816FD9342</key>
+		<string>https://github.com/sT00ne/calculator.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>cal.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>63F5D8B32FD5D11DDE894D5E7B37E55816FD9342</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sT00ne/calculator.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>63F5D8B32FD5D11DDE894D5E7B37E55816FD9342</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>63F5D8B32FD5D11DDE894D5E7B37E55816FD9342</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cal</string>
+		</dict>
+	</array>
+</dict>
+</plist>

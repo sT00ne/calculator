@@ -212,13 +212,206 @@ class ViewController: UIViewController {
         
         
         if num == "=" {
-            
+            if isequal {
+                //前一次为输入等号
+                if oprand1.count != 0 {
+                    //再算前一次的运算
+                    var res:Double = 0.0
+                    //数组转换为string
+                    var num1 = join("", oprand0)
+                    var num3:Double = 0
+                    if isnegative {
+                        num3 = -(num1 as NSString).doubleValue
+                    } else {
+                        num3 = (num1 as NSString).doubleValue
+                    }
+                    var num2 = join("", oprand1)
+                    var num4:Double = 0
+                    if isnegative2 {
+                        num4 = -(num2 as NSString).doubleValue
+                    } else {
+                        num4 = (num2 as NSString).doubleValue
+                    }
+                    switch oprator[oprator.count-1]{
+                    case "+" :
+                        //加法
+                        res = num3 + num4
+                    case "x" :
+                        //乘法
+                        res = num3 * num4
+                    case "-" :
+                        //减法
+                        res = num3 - num4
+                    case "/" :
+                        //除法
+                        res = num3 / num4
+                    default :
+                        res = 0
+                    }
+                    //如果整数，删去小数点
+                    var resint:Int = 0
+                    if res >= 0{
+                        isnegative = false
+                    } else {
+                        isnegative = true
+                        res = -res
+                    }
+                    if res % 1.0 == 0 {
+                        //整数的处理，结果存入数组op0
+                        if isnegative{
+                            result.text = "-"+"\(Int(res))"
+                        } else {
+                            result.text = "\(Int(res))"
+                        }
+                        resint = Int(res)
+                        var temp = [String]()
+                        while resint > 0{
+                            temp.append(String(resint % 10))
+                            resint = resint/10
+                        }
+                        var tempcount = temp.count - 1
+                        oprand0 = [String]()
+                        for tempcount ; tempcount >= 0 ; tempcount-- {
+                            oprand0.append(temp[tempcount])
+                        }
+                    } else {
+                        //小数的处理，存入数组op0
+                        if isnegative{
+                            result.text = "-"+"\(res)"
+                        } else {
+                            result.text = "\(res)"
+                        }
+                        var temp = [String]()
+                        resint = Int(res)
+                        var resdouble:Double = Double(res) - Double(resint)
+                        while resint > 0{
+                            temp.append(String(resint % 10))
+                            resint = resint/10
+                        }
+                        var tempcount = temp.count - 1
+                        oprand0 = [String]()
+                        for tempcount; tempcount >= 0 ; tempcount-- {
+                            oprand0.append(temp[tempcount])
+                        }
+                        oprand0.append(".")
+                        
+                        while resdouble > 0{
+                            oprand0.append(String(Int(resdouble * 10)))
+                            resdouble = resdouble * 10 % 1
+                        }
+                    }
+
+                } else {
+                    return
+                }
+            } else {
+                if oprand1.count == 0 && oprator.count != 0{
+                    oprand1 = oprand0
+                }
+                var res:Double = 0.0
+                //数组转换为string
+                var num1 = join("", oprand0)
+                var num3:Double = 0
+                if isnegative {
+                    num3 = -(num1 as NSString).doubleValue
+                } else {
+                    num3 = (num1 as NSString).doubleValue
+                }
+                var num2 = join("", oprand1)
+                var num4:Double = 0
+                if isnegative2 {
+                    num4 = -(num2 as NSString).doubleValue
+                } else {
+                    num4 = (num2 as NSString).doubleValue
+                }
+                switch oprator[oprator.count-1]{
+                case "+" :
+                    //加法
+                    res = num3 + num4
+                case "x" :
+                    //乘法
+                    res = num3 * num4
+                case "-" :
+                    //减法
+                    res = num3 - num4
+                case "/" :
+                    //除法
+                    res = num3 / num4
+                default :
+                    res = 0
+                }
+                //如果整数，删去小数点
+                var resint:Int = 0
+                if res >= 0{
+                    isnegative = false
+                } else {
+                    isnegative = true
+                    res = -res
+                }
+                if res % 1.0 == 0 {
+                    //整数的处理，结果存入数组op0
+                    if isnegative{
+                        result.text = "-"+"\(Int(res))"
+                    } else {
+                        result.text = "\(Int(res))"
+                    }
+                    resint = Int(res)
+                    var temp = [String]()
+                    while resint > 0{
+                        temp.append(String(resint % 10))
+                        resint = resint/10
+                    }
+                    var tempcount = temp.count - 1
+                    oprand0 = [String]()
+                    for tempcount ; tempcount >= 0 ; tempcount-- {
+                        oprand0.append(temp[tempcount])
+                    }
+                } else {
+                    //小数的处理，存入数组op0
+                    if isnegative{
+                        result.text = "-"+"\(res)"
+                    } else {
+                        result.text = "\(res)"
+                    }
+                    var temp = [String]()
+                    resint = Int(res)
+                    var resdouble:Double = Double(res) - Double(resint)
+                    while resint > 0{
+                        temp.append(String(resint % 10))
+                        resint = resint/10
+                    }
+                    var tempcount = temp.count - 1
+                    oprand0 = [String]()
+                    for tempcount; tempcount >= 0 ; tempcount-- {
+                        oprand0.append(temp[tempcount])
+                    }
+                    oprand0.append(".")
+                    
+                    while resdouble > 0{
+                        oprand0.append(String(Int(resdouble * 10)))
+                        resdouble = resdouble * 10 % 1
+                    }
+                }
+            }
+            isequal = true
+            isDot = false
         }
         
         if num == "+/-" {
             if result.text == "0" {
                 return
-            } else if oprator.count != 0 && oprand1.count != 0 {
+            }
+            else if isequal {
+                var str:String = join("", oprand0)
+                if isnegative {
+                    isnegative = false
+                    result.text = "\(str)"
+                } else {
+                    isnegative = true
+                    result.text = "-"+"\(str)"
+                }
+            }
+            else if oprator.count != 0 && oprand1.count != 0 {
                 if isnegative2 {
                     isnegative2 = false
                     var eq = join("", oprand1)
@@ -249,6 +442,70 @@ class ViewController: UIViewController {
             isequal = true
             isnegative = false
             isnegative2 = false
+        }
+        
+        if num == "%" {
+            if isequal {
+                var str:String = join("", oprand0)
+                var str2 = (str as NSString).doubleValue / 100
+                if isnegative {
+                    result.text = "-"+"\(str2)"
+                } else {
+                    result.text = "\(str2)"
+                }
+                var resint:Int = 0
+                if str2 % 1.0 == 0 {
+                    //整数的处理，结果存入数组op0
+                    if isnegative{
+                        result.text = "-"+"\(Int(str2))"
+                    } else {
+                        result.text = "\(Int(str2))"
+                    }
+                    resint = Int(str2)
+                    var temp = [String]()
+                    while resint > 0{
+                        temp.append(String(resint % 10))
+                        resint = resint/10
+                    }
+                    var tempcount = temp.count - 1
+                    oprand0 = [String]()
+                    for tempcount ; tempcount >= 0 ; tempcount-- {
+                        oprand0.append(temp[tempcount])
+                    }
+                } else {
+                    //小数的处理，存入数组op0
+                    if isnegative{
+                        result.text = "-"+"\(str2)"
+                    } else {
+                        result.text = "\(str2)"
+                    }
+                    var temp = [String]()
+                    resint = Int(str2)
+                    var resdouble:Double = Double(str2) - Double(resint)
+                    while resint > 0{
+                        temp.append(String(resint % 10))
+                        resint = resint/10
+                    }
+                    var tempcount = temp.count - 1
+                    oprand0 = [String]()
+                    for tempcount; tempcount >= 0 ; tempcount-- {
+                        oprand0.append(temp[tempcount])
+                    }
+                    oprand0.append(".")
+                    while resdouble > 0{
+                        oprand0.append(String(Int(resdouble * 10)))
+                        resdouble = resdouble * 10 % 1
+                    }
+                }
+            } else {
+                var str = join("",oprand1)
+                var str2 = (str as NSString).doubleValue / 100
+                if isnegative2 {
+                    result.text = "-"+"\(str2)"
+                } else {
+                    result.text = "\(str2)"
+                }
+            }
         }
 
     }
